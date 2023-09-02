@@ -1,6 +1,6 @@
 //console.log("Hello, world");
 
-const API_URL = 'https://api.thedogapi.com/v1/images/search?limit=3';
+const API_URL = 'https://api.thedogapi.com/v1/images/search?limit=3&api_key=live_6OcbOSDEuvByGMgT9krNEMu1FdVY4ASuJ55FpMeg2ytAAA2KWc5tiWVFK89J4ToP   ';
 
 
 //    const randomDog = async(url) => {
