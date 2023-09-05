@@ -11,13 +11,33 @@
 </head>
 <body>
     <header>
-        <h1>Perritos aleatorios</h1>
+        <h1>Lomitos App</h1>
     </header>
-    <section class="container">
-        <img id="img1" alt="Foto aleatoria de un perrito">
-        <img id="img2" alt="Foto aleatoria de un perrito">
-        <img id="img3" alt="Foto aleatoria de un perrito">
-        <button class="random-dog" onclick="randomDog()">Quiero ver más perritos</button>
+
+    <section id="randomDoggies" class="container">
+        <h2>Lomitos aleatorios</h2>
+        <article>
+            <img id="img1" alt="Foto aleatoria de un lomito">
+            <button class="doggie-button">Guardar lomito en favoritos</button>
+        </article>
+
+        <article>
+            <img id="img2" alt="Foto aleatoria de un lomito">
+            <button class="doggie-button">Guardar lomito en favoritos</button>
+        </article>
+
+        <article>
+            <img id="img3" alt="Foto aleatoria de un lomito">
+            <button class="doggie-button">Guardar lomito en favoritos</button>
+        </article>
+        
+        <button class="doggie-button" onclick="randomDog()">Quiero ver más lomitos</button>
+    </section>
+
+    <section id="favoritesDoggies" class="container">
+        <h2>Lomitos favoritos</h2>
+        <img id="img1" alt="Foto aleatoria de un lomito">
+        <button class="doggie-button">Sacar al lomito de favoritos</button>
     </section>
 
     <script src="./main.js"></script>
