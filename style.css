@@ -28,6 +28,16 @@
    color: navy;
 }
 
+ hr {
+  background-color: navy;
+  height: 10px;
+  margin-top: 3%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 3%;
+  width: 100%;
+ }
+
  body {
     margin-top: 100px;
  }
