@@ -35,7 +35,8 @@
   margin-left: 10%;
   margin-right: 10%;
   margin-bottom: 3%;
-  width: 100%;
+  width: 80%;
+  border-radius: 300px/10px;
  }
 
  body {
@@ -68,3 +69,15 @@
     color: navy;
     border-radius: 10px;
  }
+
+ .fav-button {
+   font-family: 'Roboto', sans-serif;
+   font-weight: bold;
+   font-size: 4rem;
+   padding: 12px;
+   width: auto;
+   height: auto;
+   background-color:lightcyan;
+   color: navy;
+   border-radius: 10px;
+}
