@@ -14,27 +14,25 @@
         <h1>Lomitos App</h1>
     </header>
 
+    <span id="error"></span>
+
     <section id="randomDoggies" class="container">
         <hr>
         <h2>Lomitos aleatorios</h2>
+
         <article>
             <img id="img1" alt="Foto aleatoria de un lomito">
-            <button class="doggie-button"></button>
+            <button class="doggie-button">Guardar lomito en favoritos</button>
         </article>
 
         <article>
             <img id="img2" alt="Foto aleatoria de un lomito">
             <button class="doggie-button">Guardar lomito en favoritos</button>
         </article>
-
-        <article>
-            <img id="img3" alt="Foto aleatoria de un lomito">
-            <button class="doggie-button">Guardar lomito en favoritos</button>
-        </article>
         
         <hr>
 
-        <button class="doggie-button" onclick="randomDog()">Quiero ver más lomitos</button>
+        <button class="doggie-button" onclick="loadRandomDogs()">Quiero ver más lomitos</button>
     </section>
 
   
