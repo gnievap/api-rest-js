@@ -19,12 +19,12 @@
     justify-content: center;
  }
  h1 {
-    font-size: 10rem;
+    font-size: 7rem;
     color: navy;
  }
 
  h2 {
-   font-size: 8rem;
+   font-size: 5rem;
    color: navy;
 }
 
@@ -61,7 +61,7 @@
  .doggie-button {
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    font-size: 4rem;
+    font-size: 3rem;
     padding: 12px;
     width: auto;
     height: auto;
@@ -73,7 +73,7 @@
  .fav-button {
    font-family: 'Roboto', sans-serif;
    font-weight: bold;
-   font-size: 4rem;
+   font-size: 3rem;
    padding: 12px;
    width: auto;
    height: auto;
