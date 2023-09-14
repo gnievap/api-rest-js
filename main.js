@@ -1,5 +1,7 @@
 const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search?limit=2&api_key=live_6OcbOSDEuvByGMgT9krNEMu1FdVY4ASuJ55FpMeg2ytAAA2KWc5tiWVFK89J4ToP';
 const API_URL_FAVORITES = 'https://api.thedogapi.com/v1/favourites?&api_key=live_6OcbOSDEuvByGMgT9krNEMu1FdVY4ASuJ55FpMeg2ytAAA2KWc5tiWVFK89J4ToP';
+const API_URL_FAVORITES_DELETE = (id) => `https://api.thedogapi.com/v1/favourites/${id}?api_key=live_6OcbOSDEuvByGMgT9krNEMu1FdVY4ASuJ55FpMeg2ytAAA2KWc5tiWVFK89J4ToP`;
+
 const spanError = document.getElementById('error');
 
 async function loadRandomDogs() {
@@ -12,12 +14,11 @@ async function loadRandomDogs() {
     if ( res.status !== 200 ){
         spanError.innerHTML = "Hubo un error: " + res.status;
     } else {
+        
         const img1 = document.getElementById('img1');
         const img2 = document.getElementById('img2');
         const fav_button1 = document.getElementById('fav_button1');
         const fav_button2 = document.getElementById('fav_button2');
-
-        
 
         img1.src = data[0].url;
         img2.src = data[1].url;
@@ -37,16 +38,23 @@ async function loadFavoritesDogs() {
     if ( res.status !== 200 ){
         spanError.innerHTML = "Hubo un error: " + res.status + " " + data.message;
     } else {
+        const section = document.getElementById('favoritesDoggies');
+        section.innerHTML = "";
+        const h2 = document.createElement('h2');
+        const h2Text = document.createTextNode('Lomitos favoritos');
+        h2.appendChild(h2Text);
+        section.appendChild(h2);
+
         data.forEach( doggie => {
-            const section = document.getElementById('favoritesDoggies');
             const article = document.createElement('article');
             const img = document.createElement('img');
             const btn = document.createElement('button');
             const btnText = document.createTextNode('Sacar al lomito de favoritos');
             btn.className = "doggie-button";
-            
-            btn.appendChild(btnText);
+
             img.src = doggie.image.url;
+            btn.appendChild(btnText);
+            btn.onclick = () => deleteFavDoggie(doggie.id);
             article.appendChild(img);
             article.appendChild(btn);
             section.appendChild(article);
@@ -72,6 +80,23 @@ async function saveFavDoggie(id){
 
     if ( res.status !== 200 ) {
         spanError.innerHTML = "Hubo un error: " + res.status + " " +  data.message;
+    } else {
+        console.log('Lomito guardado en favoritos');
+        loadFavoritesDogs();
+    }
+}
+
+async function deleteFavDoggie(id) {
+    const res = await fetch(API_URL_FAVORITES_DELETE(id), {
+        method: 'DELETE',
+    });
+    const data = await res.json();
+
+    if ( res.status !== 200 ) {
+        spanError.innerHTML = "Hubo un error: " + res.status + " " +  data.message;
+    } else {
+        console.log('Lomito eliminado de favoritos');
+        loadFavoritesDogs();
     }
 }
 
