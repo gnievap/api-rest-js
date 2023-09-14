@@ -17,6 +17,8 @@ async function loadRandomDogs() {
         const fav_button1 = document.getElementById('fav_button1');
         const fav_button2 = document.getElementById('fav_button2');
 
+        
+
         img1.src = data[0].url;
         img2.src = data[1].url;
 
@@ -41,6 +43,7 @@ async function loadFavoritesDogs() {
             const img = document.createElement('img');
             const btn = document.createElement('button');
             const btnText = document.createTextNode('Sacar al lomito de favoritos');
+            btn.className = "doggie-button";
             
             btn.appendChild(btnText);
             img.src = doggie.image.url;
