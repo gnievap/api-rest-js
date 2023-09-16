@@ -1,6 +1,7 @@
 const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search?limit=2';
 const API_URL_FAVORITES = 'https://api.thedogapi.com/v1/favourites';
 const API_URL_FAVORITES_DELETE = (id) => `https://api.thedogapi.com/v1/favourites/${id}`;
+const API_URL_UPLOAD = 'https://api.thedogapi.com/v1/images/upload';
 
 const spanError = document.getElementById('error');
 
@@ -107,6 +108,22 @@ async function deleteFavDoggie(id) {
         console.log('Lomito eliminado de favoritos');
         loadFavoritesDogs();
     }
+}
+
+async function uploadLomitoPhoto(){
+    const form = document.getElementById('uploadingForm')
+    const formData = new FormData(form);
+
+    console.log(formData.get('file'));
+
+    const res = await fetch(API_URL_UPLOAD, {
+        method: 'POST',
+        headers: {
+            //'Content-Type': 'multipart/form-data',
+            'X-API-KEY': 'live_6OcbOSDEuvByGMgT9krNEMu1FdVY4ASuJ55FpMeg2ytAAA2KWc5tiWVFK89J4ToP' 
+        },
+        body: formData,
+    })
 }
 
 loadRandomDogs();
