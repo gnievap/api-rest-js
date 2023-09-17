@@ -1,4 +1,10 @@
-const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search?limit=2';
+const api = axios.create({
+    baseURL: 'https://api.thedogapi.com/v1',
+    headers: {'X-API-KEY': 'live_6OcbOSDEuvByGMgT9krNEMu1FdVY4ASuJ55FpMeg2ytAAA2KWc5tiWVFK89J4ToP'}
+});
+//api.defaults.headers.common['X-API-KEY'] = 'live_6OcbOSDEuvByGMgT9krNEMu1FdVY4ASuJ55FpMeg2ytAAA2KWc5tiWVFK89J4ToP';
+
+const API_URL_RANDOM = 'images/search?limit=2';
 const API_URL_FAVORITES = 'https://api.thedogapi.com/v1/favourites';
 const API_URL_FAVORITES_DELETE = (id) => `https://api.thedogapi.com/v1/favourites/${id}`;
 const API_URL_UPLOAD = 'https://api.thedogapi.com/v1/images/upload';
@@ -69,24 +75,27 @@ async function loadFavoritesDogs() {
 }
 
 async function saveFavDoggie(id){
-    const res = await fetch(API_URL_FAVORITES, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-API-KEY': 'live_6OcbOSDEuvByGMgT9krNEMu1FdVY4ASuJ55FpMeg2ytAAA2KWc5tiWVFK89J4ToP',
-        },
-        body: JSON.stringify({
-            image_id: id
-        }),
+    const { data, status } = await api.post('/favourites', {
+        image_id: id,
     });
+    // const res = await fetch(API_URL_FAVORITES, {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         'X-API-KEY': 'live_6OcbOSDEuvByGMgT9krNEMu1FdVY4ASuJ55FpMeg2ytAAA2KWc5tiWVFK89J4ToP',
+    //     },
+    //     body: JSON.stringify({
+    //         image_id: id
+    //     }),
+    // });
 
-    const data = await res.json();
+    // const data = await res.json();
 
     console.log('Save');
-    console.log(res);
+    //console.log(res);
 
-    if ( res.status !== 200 ) {
-        spanError.innerHTML = "Hubo un error: " + res.status + " " +  data.message;
+    if ( status !== 200 ) {
+        spanError.innerHTML = "Hubo un error: " + status + " " +  data.message;
     } else {
         console.log('Lomito guardado en favoritos');
         loadFavoritesDogs();
