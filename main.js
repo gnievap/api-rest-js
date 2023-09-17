@@ -123,7 +123,19 @@ async function uploadLomitoPhoto(){
             'X-API-KEY': 'live_6OcbOSDEuvByGMgT9krNEMu1FdVY4ASuJ55FpMeg2ytAAA2KWc5tiWVFK89J4ToP' 
         },
         body: formData,
-    })
+    });
+
+    const data = await res.json();
+
+    if ( res.status !== 201 ){
+        spanError.innerHTML = `Hubo un error al subir lomito: ${res.status} ${data.message}`
+    } else {
+        console.log('Foto de michi subida');
+        console.log({ data });
+        console.log( data.url );
+        saveFavDoggie( data.id );
+        loadFavoritesDogs();
+    }
 }
 
 loadRandomDogs();
